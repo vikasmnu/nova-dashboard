@@ -74,15 +74,22 @@
 ======================================== */
 
 #clock {
-
-    font-size: clamp(5rem, 12vw, 8rem);
-
+    font-size: clamp(7rem, 11vw, 10rem);
     font-weight: var(--font-light);
+    line-height: 0.9;
+    letter-spacing: -0.08em;
+}
 
-    line-height: 1;
+#greeting {
+    margin-top: var(--space-2);
+}
 
-    letter-spacing: -0.06em;
+#username {
+    margin-top: var(--space-1);
+}
 
+#current-date {
+    margin-top: var(--space-2);
 }
 
 #greeting {

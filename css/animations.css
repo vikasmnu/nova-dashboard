@@ -420,3 +420,18 @@
     transform: translateX(0);
 
 }
+
+.search-bar,
+.search-icon {
+
+    transition: all .3s ease;
+
+}
+
+.search-bar:focus-within .search-icon {
+
+    transform: scale(1.15);
+
+    opacity: 1;
+
+}
