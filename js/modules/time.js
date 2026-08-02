@@ -4,92 +4,53 @@
 ========================================== */
 
 window.Time = {
+  interval: null,
 
-    interval: null,
+  elements: {
+    clock: null,
 
-    elements: {
+    greeting: null,
 
-        clock: null,
+    date: null,
+  },
 
-        greeting: null,
+  init() {
+    this.elements.clock = document.getElementById("clock");
 
-        date: null
+    this.elements.greeting = document.getElementById("greeting");
 
-    },
+    this.elements.date = document.getElementById("current-date");
 
-    init() {
+    this.update();
 
-        this.elements.clock =
-            document.getElementById("clock");
+    this.interval = setInterval(() => {
+      this.update();
+    }, 1000);
+  },
 
-        this.elements.greeting =
-            document.getElementById("greeting");
+  update() {
+    const now = Utils.now();
 
-        this.elements.date =
-            document.getElementById("current-date");
+    const use24Hour = Settings.get("clock24Hour");
 
-        this.update();
+    if (this.elements.clock) {
+      this.elements.clock.textContent = Utils.formatTime(
+        now,
 
-        this.interval = setInterval(() => {
-
-            this.update();
-
-        }, 1000);
-
-    },
-
-    update() {
-
-        const now = Utils.now();
-
-        const settings = Storage.get(
-
-            STORAGE_KEYS.SETTINGS,
-
-            {}
-
-        );
-
-        const use24Hour =
-
-            settings.clock24Hour ?? false;
-
-        if (this.elements.clock) {
-
-            this.elements.clock.textContent =
-
-                Utils.formatTime(
-
-                    now,
-
-                    use24Hour
-
-                );
-
-        }
-
-        if (this.elements.greeting) {
-
-            this.elements.greeting.textContent =
-
-                Utils.getGreeting(now);
-
-        }
-
-        if (this.elements.date) {
-
-            this.elements.date.textContent =
-
-                Utils.formatDate(now);
-
-        }
-
-    },
-
-    destroy() {
-
-        clearInterval(this.interval);
-
+        use24Hour,
+      );
     }
 
+    if (this.elements.greeting) {
+      this.elements.greeting.textContent = Utils.getGreeting(now);
+    }
+
+    if (this.elements.date) {
+      this.elements.date.textContent = Utils.formatDate(now);
+    }
+  },
+
+  destroy() {
+    clearInterval(this.interval);
+  },
 };

@@ -1,0 +1,12 @@
+#task-list {
+  flex: 1;
+
+  overflow-y: auto;
+}
+
+.task-input {
+  display: flex;
+
+  gap: var(--space-3);
+}
+    

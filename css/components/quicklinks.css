@@ -1,0 +1,36 @@
+/* ========================================
+   Quick Links
+======================================== */
+
+.quick-links {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+
+  gap: var(--space-4);
+
+  margin-top: var(--space-8);
+}
+
+/* ========================================
+   Quick Link
+======================================== */
+
+.quick-link {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: var(--space-3);
+
+  min-height: 110px;
+}
+
+.quick-link img {
+  width: 34px;
+  height: 34px;
+}

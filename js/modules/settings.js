@@ -4,79 +4,89 @@
 ========================================== */
 
 window.Settings = {
+  defaults: {
+    clock24Hour: false,
 
-    defaults: {
+    temperatureUnit: "metric",
 
-        clock24Hour: false,
+    searchEngine: "google",
+  },
 
-        temperatureUnit: "metric",
+  data: {},
 
-        searchEngine: "google"
+  panel: null,
 
-    },
+  openButton: null,
 
-    data: {},
+  closeButton: null,
 
-    init() {
+  init() {
+    this.load();
 
-        this.load();
+    this.cache();
 
-    },
+    this.events();
+  },
 
-    load() {
+  cache() {
+    this.panel = document.getElementById("settings-panel");
 
-        this.data = Storage.get(
+    this.openButton = document.getElementById("settings-button");
 
-            STORAGE_KEYS.SETTINGS,
+    this.closeButton = document.getElementById("settings-close");
+  },
 
-            this.defaults
+  events() {
+    this.openButton?.addEventListener(
+      "click",
 
-        );
+      () => this.open(),
+    );
 
-    },
+    this.closeButton?.addEventListener(
+      "click",
 
-    save() {
+      () => this.close(),
+    );
+  },
 
-        Storage.set(
+  open() {
+    this.panel.classList.add("open");
+  },
 
-            STORAGE_KEYS.SETTINGS,
+  close() {
+    this.panel.classList.remove("open");
+  },
 
-            this.data
+  load() {
+    this.data = Storage.get(
+      STORAGE_KEYS.SETTINGS,
 
-        );
+      this.defaults,
+    );
+  },
 
-    },
+  save() {
+    Storage.set(
+      STORAGE_KEYS.SETTINGS,
 
-    get(key) {
+      this.data,
+    );
+  },
 
-        return this.data[key];
+  get(key) {
+    return this.data[key];
+  },
 
-    },
+  set(key, value) {
+    if (!(key in this.defaults)) {
+      console.warn(`Unknown setting: ${key}`);
 
-    set(key, value) {
-
-        this.data[key] = value;
-
-        this.save();
-
-    },
-
-    reset() {
-
-        this.data = {
-
-            ...this.defaults
-
-        };
-
-        this.save();
-
-    },
-
-    destroy() {
-
+      return;
     }
 
-};
+    this.data[key] = value;
 
-console.log("settings.js loaded");
+    this.save();
+  },
+};

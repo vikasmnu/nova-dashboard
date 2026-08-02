@@ -1,0 +1,29 @@
+/* ========================================
+   Widgets
+======================================== */
+
+.widgets {
+  margin-top: var(--space-10);
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: var(--space-6);
+}
+
+/* ========================================
+   Widget
+======================================== */
+
+.widget {
+  min-height: var(--widget-height);
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  gap: var(--space-4);
+}

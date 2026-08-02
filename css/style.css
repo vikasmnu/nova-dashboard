@@ -1,8 +1,57 @@
-@import url("./variables.css");
-@import url("./reset.css");
-@import url("./typography.css");
-@import url("./layout.css");
-@import url("./components.css");
-@import url("./widgets.css");
-@import url("./animations.css");
-@import url("./responsive.css");
+/* ==========================================
+   BASE
+========================================== */
+
+@import url("./base/reset.css");
+@import url("./base/variables.css");
+@import url("./base/typography.css");
+@import url("./base/base.css");
+
+
+/* ==========================================
+   LAYOUT
+========================================== */
+
+@import url("./layout/layout.css");
+@import url("./layout/header.css");
+@import url("./layout/hero.css");
+@import url("./layout/dashboard.css");
+@import url("./layout/footer.css");
+@import url("./layout/grid.css");
+
+
+/* ==========================================
+   COMPONENTS
+========================================== */
+
+@import url("./components/buttons.css");
+@import url("./components/cards.css");
+@import url("./components/dropdown.css");
+@import url("./components/search.css");
+@import url("./components/settings.css");
+@import url("./components/toggle.css");
+@import url("./components/tooltip.css");
+@import url("./components/widgets.css");
+@import url("./components/quicklinks.css");
+
+
+/* ==========================================
+   MODULES
+========================================== */
+
+@import url("./modules/weather.css");
+@import url("./modules/wallpaper.css");
+@import url("./modules/focus.css");
+@import url("./modules/tasks.css");
+@import url("./modules/quotes.css");
+@import url("./modules/market.css");
+
+
+/* ==========================================
+   UTILITIES
+========================================== */
+
+@import url("./utilities/animations.css");
+@import url("./utilities/helpers.css");
+@import url("./utilities/responsive.css");
+@import url("./utilities/spacing.css");
