@@ -240,6 +240,202 @@
     </aside>
 
     <!-- ========================================= -->
+<!-- Settings Panel -->
+<!-- ========================================= -->
+
+<aside id="settings-panel" class="settings-panel">
+
+    <div class="settings-header">
+
+        <h2>Settings</h2>
+
+        <button
+            id="settings-close"
+            class="icon-button"
+            aria-label="Close Settings">
+
+            ✕
+
+        </button>
+
+    </div>
+
+    <div class="settings-content">
+
+        <!-- Appearance -->
+
+        <section class="settings-section">
+
+            <h3>Appearance</h3>
+
+            <div class="setting-row">
+
+                <label for="wallpaper-category">
+
+                    Wallpaper Category
+
+                </label>
+
+                <select id="wallpaper-category">
+
+                    <option value="nature">Nature</option>
+
+                    <option value="minimal">Minimal</option>
+
+                    <option value="mountains">Mountains</option>
+
+                    <option value="space">Space</option>
+
+                    <option value="city">City</option>
+
+                </select>
+
+            </div>
+
+            <div class="setting-row">
+
+                <label for="background-blur">
+
+                    Background Blur
+
+                </label>
+
+                <input
+                    id="background-blur"
+                    type="range"
+                    min="0"
+                    max="20"
+                    value="8">
+
+            </div>
+
+        </section>
+
+        <!-- Dashboard -->
+
+        <section class="settings-section">
+
+            <h3>Dashboard</h3>
+
+            <div class="setting-row">
+
+                <label for="clock-format">
+
+                    24 Hour Clock
+
+                </label>
+
+                <input
+                    id="clock-format"
+                    type="checkbox">
+
+            </div>
+
+            <div class="setting-row">
+
+                <label for="temperature-unit">
+
+                    Temperature
+
+                </label>
+
+                <select id="temperature-unit">
+
+                    <option value="metric">
+
+                        Celsius (°C)
+
+                    </option>
+
+                    <option value="imperial">
+
+                        Fahrenheit (°F)
+
+                    </option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+        <!-- Search -->
+
+        <section class="settings-section">
+
+            <h3>Search</h3>
+
+            <div class="setting-row">
+
+                <label for="search-engine">
+
+                    Default Engine
+
+                </label>
+
+                <select id="search-engine">
+
+                    <option value="google">
+
+                        Google
+
+                    </option>
+
+                    <option value="chatgpt">
+
+                        ChatGPT
+
+                    </option>
+
+                    <option value="gemini">
+
+                        Gemini
+
+                    </option>
+
+                    <option value="perplexity">
+
+                        Perplexity
+
+                    </option>
+
+                    <option value="github">
+
+                        GitHub
+
+                    </option>
+
+                    <option value="youtube">
+
+                        YouTube
+
+                    </option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+        <!-- About -->
+
+        <section class="settings-section">
+
+            <h3>About</h3>
+
+            <p class="settings-version">
+
+                Nova Dashboard v1.0.0
+
+            </p>
+
+        </section>
+
+    </div>
+
+</aside>
+
+    <!-- ========================================= -->
     <!-- JavaScript -->
     <!-- ========================================= -->
 
