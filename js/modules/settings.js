@@ -20,6 +20,10 @@ window.Settings = {
 
   closeButton: null,
 
+  clockToggle: null,
+
+  temperatureSelect: null,
+
   init() {
     this.load();
 
@@ -34,6 +38,18 @@ window.Settings = {
     this.openButton = document.getElementById("settings-button");
 
     this.closeButton = document.getElementById("settings-close");
+
+    this.clockToggle = document.getElementById("clock-format");
+
+    if (this.clockToggle) {
+      this.clockToggle.checked = this.get("clock24Hour");
+    }
+
+    this.temperatureSelect = document.getElementById("temperature-unit");
+
+    if (this.temperatureSelect) {
+      this.temperatureSelect.value = this.get("temperatureUnit");
+    }
   },
 
   events() {
@@ -47,6 +63,34 @@ window.Settings = {
       "click",
 
       () => this.close(),
+    );
+
+    this.clockToggle?.addEventListener(
+      "change",
+
+      (event) => {
+        this.set(
+          "clock24Hour",
+
+          event.target.checked,
+        );
+
+        Time.update();
+      },
+    );
+
+    this.temperatureSelect?.addEventListener(
+      "change",
+
+      (event) => {
+        this.set(
+          "temperatureUnit",
+
+          event.target.value,
+        );
+
+        Weather.refresh();
+      },
     );
   },
 
@@ -86,6 +130,14 @@ window.Settings = {
     }
 
     this.data[key] = value;
+
+    this.save();
+  },
+
+  reset() {
+    this.data = {
+      ...this.defaults,
+    };
 
     this.save();
   },

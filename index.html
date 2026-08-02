@@ -1,680 +1,391 @@
 <!doctype html>
-<html lang="en">
-  <!DOCTYPE html>
 
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
 
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Nova Dashboard</title>
 
     <meta
-        name="description"
-        content="Nova Dashboard - A beautiful productivity dashboard for developers and traders.">
+      name="description"
+      content="Nova Dashboard - A beautiful productivity dashboard for developers and traders."
+    />
 
-    <link
-        rel="icon"
-        href="assets/images/favicon.ico">
+    <link rel="icon" href="assets/images/favicon.ico" />
 
     <!-- ========================================= -->
     <!-- Google Fonts -->
     <!-- ========================================= -->
 
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- ========================================= -->
     <!-- Styles -->
     <!-- ========================================= -->
 
-    <link
-        rel="stylesheet"
-        href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-</head>
-
-
-  <!-- ========================================= -->
-<!-- Background -->
-<!-- ========================================= -->
-
-<div id="background"></div>
-
-<div class="overlay"></div>
-
-<!-- ========================================= -->
-<!-- Dashboard -->
-<!-- ========================================= -->
-
-<main class="dashboard">
-
+  <body>
     <!-- ========================================= -->
-    <!-- Header -->
+    <!-- Background -->
     <!-- ========================================= -->
 
-    <header class="header">
+    <div id="background"></div>
 
+    <div class="overlay"></div>
+
+    <!-- ========================================= -->
+    <!-- Dashboard -->
+    <!-- ========================================= -->
+
+    <main class="dashboard">
+      <!-- ========================================= -->
+      <!-- Header -->
+      <!-- ========================================= -->
+
+      <header class="header">
         <!-- Logo -->
 
         <div class="logo-container">
+          <img src="assets/images/logo.png" alt="Nova Logo" class="logo" />
 
-            <img
-                src="assets/images/logo.png"
-                alt="Nova Logo"
-                class="logo">
-
-            <span class="logo-text">
-
-                Nova
-
-            </span>
-
+          <span class="logo-text"> Nova </span>
         </div>
 
         <!-- Weather -->
 
-        <section
-            class="weather-widget glass">
+        <section class="weather-widget glass">
+          <div class="widget__header">
+            <div class="weather-top">
+              <img
+                id="weather-icon"
+                src="assets/icons/ui/weather.svg"
+                alt="Weather Icon"
+              />
 
-            <div class="widget__header">
-
-                <div class="weather-top">
-
-                    <img
-                        id="weather-icon"
-                        src="assets/icons/ui/weather.svg"
-                        alt="Weather Icon">
-
-                    <span id="temperature">
-
-                        --°
-
-                    </span>
-
-                </div>
-
+              <span id="temperature"> --° </span>
             </div>
+          </div>
 
-            <div class="widget__body">
+          <div class="widget__body">
+            <p id="location">Detecting location...</p>
 
-                <p id="location">
-
-                    Detecting location...
-
-                </p>
-
-                <p id="weather-description"></p>
-
-            </div>
-
+            <p id="weather-description"></p>
+          </div>
         </section>
 
         <!-- Settings -->
 
         <button
-            id="settings-button"
-            class="icon-button"
-            aria-label="Open Settings">
-
-            <img
-                src="assets/icons/ui/settings.svg"
-                alt="Settings">
-
+          id="settings-button"
+          class="icon-button"
+          aria-label="Open Settings"
+        >
+          <img src="assets/icons/ui/settings.svg" alt="Settings" />
         </button>
+      </header>
 
-    </header>
+      <!-- ========================================= -->
+      <!-- Hero -->
+      <!-- ========================================= -->
 
-    <!-- ========================================= -->
-    <!-- Hero -->
-    <!-- ========================================= -->
+      <section class="hero">
+        <h1 id="clock">00:00</h1>
 
-    <section class="hero">
+        <h2 id="greeting">Good Morning,</h2>
 
-        <h1 id="clock">
+        <h3 id="username">Vikas</h3>
 
-            00:00
-
-        </h1>
-
-        <h2 id="greeting">
-
-            Good Morning,
-
-        </h2>
-
-        <h3 id="username">
-
-            Vikas
-
-        </h3>
-
-        <p id="current-date">
-
-            Monday, 1 January
-
-        </p>
+        <p id="current-date">Monday, 1 January</p>
 
         <!-- Search -->
 
-        <form
-            id="search-form"
-            class="search-bar glass">
+        <form id="search-form" class="search-bar glass">
+          <svg
+            class="search-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
 
-            <svg
-                class="search-icon"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round">
+            <path d="m21 21-4.3-4.3"></path>
+          </svg>
 
-                <circle
-                    cx="11"
-                    cy="11"
-                    r="8">
-
-                </circle>
-
-                <path
-                    d="m21 21-4.3-4.3">
-
-                </path>
-
-            </svg>
-
-            <input
-                id="search-input"
-                type="text"
-                placeholder="Search..."
-                autocomplete="off">
-
+          <input
+            id="search-input"
+            type="text"
+            placeholder="Search..."
+            autocomplete="off"
+          />
         </form>
+      </section>
 
-    </section>
+      <!-- ========================================= -->
+      <!-- Quick Links -->
+      <!-- ========================================= -->
 
-        <!-- ========================================= -->
-    <!-- Quick Links -->
-    <!-- ========================================= -->
-
-    <section
-        id="quick-links"
-        class="quick-links">
-
+      <section id="quick-links" class="quick-links">
         <!-- Generated dynamically -->
+      </section>
 
-    </section>
+      <!-- ========================================= -->
+      <!-- Widgets -->
+      <!-- ========================================= -->
 
-    <!-- ========================================= -->
-    <!-- Widgets -->
-    <!-- ========================================= -->
-
-    <section class="widgets">
-
+      <section class="widgets">
         <!-- ========================================= -->
         <!-- Focus -->
         <!-- ========================================= -->
 
-        <article
-            id="focus-widget"
-            class="widget glass card">
+        <article id="focus-widget" class="widget glass card">
+          <div class="widget__header">
+            <h3 class="widget__title">Today's Focus</h3>
+          </div>
 
-            <div class="widget__header">
-
-                <h3 class="widget__title">
-
-                    Today's Focus
-
-                </h3>
-
-            </div>
-
-            <div class="widget__body">
-
-                <input
-                    id="focus-input"
-                    type="text"
-                    placeholder="What is your main goal today?">
-
-            </div>
-
+          <div class="widget__body">
+            <input
+              id="focus-input"
+              type="text"
+              placeholder="What is your main goal today?"
+            />
+          </div>
         </article>
 
         <!-- ========================================= -->
         <!-- Quote -->
         <!-- ========================================= -->
 
-        <article
-            id="quote-widget"
-            class="widget glass card">
+        <article id="quote-widget" class="widget glass card">
+          <div class="widget__header">
+            <h3 class="widget__title">Daily Quote</h3>
+          </div>
 
-            <div class="widget__header">
+          <div class="widget__body">
+            <blockquote id="quote">Loading...</blockquote>
+          </div>
 
-                <h3 class="widget__title">
-
-                    Daily Quote
-
-                </h3>
-
-            </div>
-
-            <div class="widget__body">
-
-                <blockquote id="quote">
-
-                    Loading...
-
-                </blockquote>
-
-            </div>
-
-            <div class="widget__footer">
-
-                <cite id="quote-author"></cite>
-
-            </div>
-
+          <div class="widget__footer">
+            <cite id="quote-author"></cite>
+          </div>
         </article>
 
         <!-- ========================================= -->
         <!-- Market -->
         <!-- ========================================= -->
 
-        <article
-            id="market-widget"
-            class="widget glass card">
+        <article id="market-widget" class="widget glass card">
+          <div class="widget__header">
+            <h3 class="widget__title">Markets</h3>
+          </div>
 
-            <div class="widget__header">
+          <div class="widget__body">
+            <div class="market-row">
+              <span>NIFTY 50</span>
 
-                <h3 class="widget__title">
-
-                    Markets
-
-                </h3>
-
+              <span id="nifty"> Loading... </span>
             </div>
 
-            <div class="widget__body">
+            <div class="market-row">
+              <span>BANKNIFTY</span>
 
-                <div class="market-row">
-
-                    <span>NIFTY 50</span>
-
-                    <span id="nifty">
-
-                        Loading...
-
-                    </span>
-
-                </div>
-
-                <div class="market-row">
-
-                    <span>BANKNIFTY</span>
-
-                    <span id="banknifty">
-
-                        Loading...
-
-                    </span>
-
-                </div>
-
+              <span id="banknifty"> Loading... </span>
             </div>
-
+          </div>
         </article>
+      </section>
 
-    </section>
+      <!-- ========================================= -->
+      <!-- Footer -->
+      <!-- ========================================= -->
 
-    <!-- ========================================= -->
-    <!-- Footer -->
-    <!-- ========================================= -->
+      <footer class="footer">
+        <p id="background-author">Photo by Unsplash</p>
 
-    <footer class="footer">
-
-        <p id="background-author">
-
-            Photo by Unsplash
-
-        </p>
-
-        <span>
-
-            Nova Dashboard v1.0.0
-
-        </span>
-
-    </footer>
-
-</main>
-
-<!-- ========================================= -->
-<!-- Panels -->
-<!-- ========================================= -->
-
-<div class="panels">
+        <span> Nova Dashboard v1.0.0 </span>
+      </footer>
+    </main>
 
     <!-- ========================================= -->
-    <!-- Tasks Panel -->
+    <!-- Panels -->
     <!-- ========================================= -->
 
-    <aside
-        id="tasks-panel"
-        class="tasks-panel">
+    <div class="panels">
+      <!-- ========================================= -->
+      <!-- Tasks Panel -->
+      <!-- ========================================= -->
 
+      <aside id="tasks-panel" class="tasks-panel">
         <div class="tasks-header">
+          <h2>Tasks</h2>
 
-            <h2>
-
-                Tasks
-
-            </h2>
-
-            <button
-                id="tasks-close"
-                class="icon-button"
-                aria-label="Close Tasks">
-
-                ✕
-
-            </button>
-
+          <button id="tasks-close" class="icon-button" aria-label="Close Tasks">
+            ✕
+          </button>
         </div>
 
-        <div
-            id="task-list"
-            class="tasks-content">
-
-            <!-- Generated dynamically -->
-
+        <div id="task-list" class="tasks-content">
+          <!-- Generated dynamically -->
         </div>
 
         <div class="task-input">
+          <input id="new-task" type="text" placeholder="Add a task" />
 
-            <input
-                id="new-task"
-                type="text"
-                placeholder="Add a task">
-
-            <button
-                id="add-task"
-                class="button button-primary">
-
-                Add
-
-            </button>
-
+          <button id="add-task" class="button button-primary">Add</button>
         </div>
+      </aside>
 
-    </aside>
+      <!-- ========================================= -->
+      <!-- Settings Panel -->
+      <!-- ========================================= -->
 
-    <!-- ========================================= -->
-    <!-- Settings Panel -->
-    <!-- ========================================= -->
-
-    <aside
-        id="settings-panel"
-        class="settings-panel">
-
+      <aside id="settings-panel" class="settings-panel">
         <div class="settings-header">
+          <h2>Settings</h2>
 
-            <h2>
-
-                Settings
-
-            </h2>
-
-            <button
-                id="settings-close"
-                class="icon-button"
-                aria-label="Close Settings">
-
-                ✕
-
-            </button>
-
+          <button
+            id="settings-close"
+            class="icon-button"
+            aria-label="Close Settings"
+          >
+            ✕
+          </button>
         </div>
 
         <div class="settings-content">
+          <!-- ========================================= -->
+          <!-- Appearance -->
+          <!-- ========================================= -->
 
-            <!-- ========================================= -->
-            <!-- Appearance -->
-            <!-- ========================================= -->
+          <section class="settings-section">
+            <h3>Appearance</h3>
 
-            <section class="settings-section">
+            <div class="setting-row">
+              <label for="wallpaper-category"> Wallpaper Category </label>
 
-                <h3>
+              <select id="wallpaper-category">
+                <option value="nature">Nature</option>
 
-                    Appearance
+                <option value="minimal">Minimal</option>
 
-                </h3>
+                <option value="mountains">Mountains</option>
 
-                <div class="setting-row">
+                <option value="space">Space</option>
 
-                    <label for="wallpaper-category">
+                <option value="city">City</option>
+              </select>
+            </div>
 
-                        Wallpaper Category
+            <div class="setting-row">
+              <label for="background-blur"> Background Blur </label>
 
-                    </label>
+              <input
+                id="background-blur"
+                type="range"
+                min="0"
+                max="20"
+                value="8"
+              />
+            </div>
+          </section>
 
-                    <select id="wallpaper-category">
+          <!-- ========================================= -->
+          <!-- Dashboard -->
+          <!-- ========================================= -->
 
-                        <option value="nature">Nature</option>
+          <section class="settings-section">
+            <h3>Dashboard</h3>
 
-                        <option value="minimal">Minimal</option>
+            <div class="setting-row">
+              <label for="clock-format"> 24 Hour Clock </label>
 
-                        <option value="mountains">Mountains</option>
+              <input id="clock-format" type="checkbox" />
+            </div>
 
-                        <option value="space">Space</option>
+            <div class="setting-row">
+              <label for="temperature-unit"> Temperature </label>
 
-                        <option value="city">City</option>
+              <select id="temperature-unit">
+                <option value="metric">Celsius (°C)</option>
 
-                    </select>
+                <option value="imperial">Fahrenheit (°F)</option>
+              </select>
+            </div>
+          </section>
 
-                </div>
+          <!-- ========================================= -->
+          <!-- Search -->
+          <!-- ========================================= -->
 
-                <div class="setting-row">
+          <section class="settings-section">
+            <h3>Search</h3>
 
-                    <label for="background-blur">
+            <div class="setting-row">
+              <label for="search-engine"> Default Search Engine </label>
 
-                        Background Blur
+              <select id="search-engine">
+                <option value="google">Google</option>
 
-                    </label>
+                <option value="chatgpt">ChatGPT</option>
 
-                    <input
-                        id="background-blur"
-                        type="range"
-                        min="0"
-                        max="20"
-                        value="8">
+                <option value="gemini">Gemini</option>
 
-                </div>
+                <option value="perplexity">Perplexity</option>
 
-            </section>
+                <option value="github">GitHub</option>
 
-            <!-- ========================================= -->
-            <!-- Dashboard -->
-            <!-- ========================================= -->
+                <option value="youtube">YouTube</option>
+              </select>
+            </div>
+          </section>
 
-            <section class="settings-section">
+          <!-- ========================================= -->
+          <!-- About -->
+          <!-- ========================================= -->
 
-                <h3>
+          <section class="settings-section">
+            <h3>About</h3>
 
-                    Dashboard
-
-                </h3>
-
-                <div class="setting-row">
-
-                    <label for="clock-format">
-
-                        24 Hour Clock
-
-                    </label>
-
-                    <input
-                        id="clock-format"
-                        type="checkbox">
-
-                </div>
-
-                <div class="setting-row">
-
-                    <label for="temperature-unit">
-
-                        Temperature
-
-                    </label>
-
-                    <select id="temperature-unit">
-
-                        <option value="metric">
-
-                            Celsius (°C)
-
-                        </option>
-
-                        <option value="imperial">
-
-                            Fahrenheit (°F)
-
-                        </option>
-
-                    </select>
-
-                </div>
-
-            </section>
-
-            <!-- ========================================= -->
-            <!-- Search -->
-            <!-- ========================================= -->
-
-            <section class="settings-section">
-
-                <h3>
-
-                    Search
-
-                </h3>
-
-                <div class="setting-row">
-
-                    <label for="search-engine">
-
-                        Default Search Engine
-
-                    </label>
-
-                    <select id="search-engine">
-
-                        <option value="google">
-
-                            Google
-
-                        </option>
-
-                        <option value="chatgpt">
-
-                            ChatGPT
-
-                        </option>
-
-                        <option value="gemini">
-
-                            Gemini
-
-                        </option>
-
-                        <option value="perplexity">
-
-                            Perplexity
-
-                        </option>
-
-                        <option value="github">
-
-                            GitHub
-
-                        </option>
-
-                        <option value="youtube">
-
-                            YouTube
-
-                        </option>
-
-                    </select>
-
-                </div>
-
-            </section>
-
-            <!-- ========================================= -->
-            <!-- About -->
-            <!-- ========================================= -->
-
-            <section class="settings-section">
-
-                <h3>
-
-                    About
-
-                </h3>
-
-                <p class="settings-version">
-
-                    Nova Dashboard v1.0.0
-
-                </p>
-
-            </section>
-
+            <p class="settings-version">Nova Dashboard v1.0.0</p>
+          </section>
         </div>
+      </aside>
+    </div>
 
-    </aside>
+    <!-- ========================================= -->
+    <!-- JavaScript -->
+    <!-- ========================================= -->
 
-</div>
+    <script src="js/core/config.js"></script>
+    <script src="js/core/storage.js"></script>
+    <script src="js/core/utils.js"></script>
+    <script src="js/core/api.js"></script>
 
-<!-- ========================================= -->
-<!-- JavaScript -->
-<!-- ========================================= -->
+    <script src="js/modules/wallpaper.js"></script>
+    <script src="js/modules/time.js"></script>
+    <script src="js/modules/weather.js"></script>
+    <script src="js/modules/search.js"></script>
+    <script src="js/modules/quicklinks.js"></script>
+    <script src="js/modules/quotes.js"></script>
+    <script src="js/modules/focus.js"></script>
+    <script src="js/modules/tasks.js"></script>
+    <script src="js/modules/settings.js"></script>
+    <script src="js/modules/market.js"></script>
 
-<script src="js/core/config.js"></script>
-<script src="js/core/storage.js"></script>
-<script src="js/core/utils.js"></script>
-<script src="js/core/api.js"></script>
-
-<script src="js/modules/wallpaper.js"></script>
-<script src="js/modules/time.js"></script>
-<script src="js/modules/weather.js"></script>
-<script src="js/modules/search.js"></script>
-<script src="js/modules/quicklinks.js"></script>
-<script src="js/modules/quotes.js"></script>
-<script src="js/modules/focus.js"></script>
-<script src="js/modules/tasks.js"></script>
-<script src="js/modules/settings.js"></script>
-<script src="js/modules/market.js"></script>
-
-<script src="js/app.js"></script>
-
-</body>
-
+    <script src="js/app.js"></script>
+  </body>
 </html>
