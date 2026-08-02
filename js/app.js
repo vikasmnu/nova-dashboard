@@ -3,18 +3,12 @@
    App
 ========================================== */
 
-document.addEventListener(
+document.addEventListener("DOMContentLoaded", () => {
 
-    "DOMContentLoaded",
+    console.log(`${CONFIG.APP.NAME} v${CONFIG.APP.VERSION}`);
 
-    () => {
+    Wallpaper.init();
 
-        console.log("Nova Dashboard Started");
+    Time.init();
 
-        Wallpaper.init();
-
-        Time.init();
-
-    }
-
-);
+});

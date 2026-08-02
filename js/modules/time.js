@@ -3,23 +3,34 @@
    Time Module
 ========================================== */
 
-const Time = {
+window.Time = {
+
+    interval: null,
 
     elements: {
 
-        clock: document.getElementById("clock"),
+        clock: null,
 
-        greeting: document.getElementById("greeting"),
+        greeting: null,
 
-        date: document.getElementById("current-date")
+        date: null
 
     },
 
     init() {
 
+        this.elements.clock =
+            document.getElementById("clock");
+
+        this.elements.greeting =
+            document.getElementById("greeting");
+
+        this.elements.date =
+            document.getElementById("current-date");
+
         this.update();
 
-        setInterval(() => {
+        this.interval = setInterval(() => {
 
             this.update();
 
@@ -43,23 +54,41 @@ const Time = {
 
             settings.clock24Hour ?? false;
 
-        this.elements.clock.textContent =
+        if (this.elements.clock) {
 
-            Utils.formatTime(
+            this.elements.clock.textContent =
 
-                now,
+                Utils.formatTime(
 
-                use24Hour
+                    now,
 
-            );
+                    use24Hour
 
-        this.elements.greeting.textContent =
+                );
 
-            Utils.getGreeting(now);
+        }
 
-        this.elements.date.textContent =
+        if (this.elements.greeting) {
 
-            Utils.formatDate(now);
+            this.elements.greeting.textContent =
+
+                Utils.getGreeting(now);
+
+        }
+
+        if (this.elements.date) {
+
+            this.elements.date.textContent =
+
+                Utils.formatDate(now);
+
+        }
+
+    },
+
+    destroy() {
+
+        clearInterval(this.interval);
 
     }
 

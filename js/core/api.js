@@ -3,7 +3,7 @@
    API Service
 ========================================== */
 
-const API = {
+window.API = {
 
     /**
      * Generic GET Request
@@ -45,63 +45,23 @@ const API = {
 
     },
 
-    /* ======================================
-       Unsplash
-    ====================================== */
+    /**
+     * Weather
+     */
 
-    async getBackground(category = "nature") {
-
-        const url =
-
-            `${CONFIG.UNSPLASH.BASE_URL}?` +
-
-            `query=${category}` +
-
-            `&orientation=landscape` +
-
-            `&client_id=${CONFIG.UNSPLASH.ACCESS_KEY}`;
-
-        return await this.get(url);
-
-    },
-
-    /* ======================================
-       Weather
-    ====================================== */
-
-    async getWeather(lat, lon) {
+    async getWeather(latitude, longitude) {
 
         const url =
 
             `${CONFIG.WEATHER.BASE_URL}` +
 
-            `?lat=${lat}` +
+            `?lat=${latitude}` +
 
-            `&lon=${lon}` +
+            `&lon=${longitude}` +
 
-            `&units=metric` +
+            `&appid=${CONFIG.WEATHER.API_KEY}` +
 
-            `&appid=${CONFIG.WEATHER.API_KEY}`;
-
-        return await this.get(url);
-
-    },
-
-
-
-    /* ======================================
-       Market
-    ====================================== */
-
-    async getMarket(symbol) {
-
-        const url =
-
-            `${CONFIG.MARKET.BASE_URL}` +
-
-            `?symbol=${symbol}` +
-
-            `&apikey=${CONFIG.MARKET.API_KEY}`;
+            `&units=${CONFIG.WEATHER.UNITS}`;
 
         return await this.get(url);
 
