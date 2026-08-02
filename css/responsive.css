@@ -1,0 +1,206 @@
+/* ============================================
+   NOVA DASHBOARD
+   Responsive
+============================================ */
+
+/* ========================================
+   Breakpoints
+
+   Desktop XL : 1600px+
+   Desktop    : 1440px
+   Laptop     : 1280px
+   Tablet     : 992px
+   Mobile     : 768px
+   Small      : 480px
+======================================== */
+
+
+/* ========================================
+   Desktop (≤ 1440px)
+======================================== */
+
+@media (max-width: 1440px) {
+
+    .dashboard {
+        padding: var(--space-6);
+    }
+
+    #clock {
+        font-size: 6rem;
+    }
+
+    .widgets {
+        gap: var(--space-5);
+    }
+
+}
+
+
+/* ========================================
+   Laptop (≤ 1280px)
+======================================== */
+
+@media (max-width: 1280px) {
+
+    :root {
+
+        --search-width: 600px;
+
+    }
+
+    .quick-links {
+
+        grid-template-columns: repeat(4, 1fr);
+
+    }
+
+}
+
+
+/* ========================================
+   Tablet (≤ 992px)
+======================================== */
+
+@media (max-width: 992px) {
+
+    .header {
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: var(--space-4);
+
+    }
+
+    .hero {
+
+        margin-top: var(--space-8);
+
+    }
+
+    #clock {
+
+        font-size: 5rem;
+
+    }
+
+    .widgets {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .quick-links {
+
+        grid-template-columns: repeat(3, 1fr);
+
+    }
+
+    .sidebar {
+
+        width: 320px;
+
+    }
+
+}
+
+
+/* ========================================
+   Mobile (≤ 768px)
+======================================== */
+
+@media (max-width: 768px) {
+
+    .dashboard {
+
+        padding: var(--space-4);
+
+    }
+
+    .logo-text {
+
+        display: none;
+
+    }
+
+    #clock {
+
+        font-size: 4rem;
+
+    }
+
+    #greeting {
+
+        font-size: var(--text-xl);
+
+    }
+
+    #username {
+
+        font-size: var(--text-lg);
+
+    }
+
+    .search-bar {
+
+        width: 100%;
+
+    }
+
+    .quick-links {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+    .footer {
+
+        flex-direction: column;
+
+        gap: var(--space-2);
+
+        text-align: center;
+
+    }
+
+    .sidebar {
+
+        width: 100%;
+
+    }
+
+}
+
+
+/* ========================================
+   Small Mobile (≤ 480px)
+======================================== */
+
+@media (max-width: 480px) {
+
+    #clock {
+
+        font-size: 3rem;
+
+    }
+
+    .quick-links {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .widget {
+
+        min-height: auto;
+
+    }
+
+    .weather-widget {
+
+        width: 100%;
+
+    }
+
+}

@@ -1,0 +1,8 @@
+{
+  "clock24Hour": false,
+  "showWeather": true,
+  "showQuote": true,
+  "showMarket": true,
+  "backgroundCategory": "nature",
+  "searchEngine": "google"
+}
