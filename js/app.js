@@ -7,8 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     console.log(`${CONFIG.APP.NAME} v${CONFIG.APP.VERSION}`);
 
-    Wallpaper.init();
+    window.Settings.init();
 
-    Time.init();
+    window.Wallpaper.init();
+
+    window.Time.init();
+
+    window.Weather.init();
 
 });

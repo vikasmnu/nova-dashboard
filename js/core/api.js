@@ -17,11 +17,7 @@ window.API = {
 
             if (!response.ok) {
 
-                throw new Error(
-
-                    `HTTP ${response.status}`
-
-                );
+                throw new Error(`HTTP ${response.status}`);
 
             }
 
@@ -31,13 +27,7 @@ window.API = {
 
         catch (error) {
 
-            console.error(
-
-                "API Error:",
-
-                error
-
-            );
+            console.error(error);
 
             return null;
 
@@ -46,7 +36,7 @@ window.API = {
     },
 
     /**
-     * Weather
+     * Current Weather
      */
 
     async getWeather(latitude, longitude) {
@@ -54,14 +44,10 @@ window.API = {
         const url =
 
             `${CONFIG.WEATHER.BASE_URL}` +
-
             `?lat=${latitude}` +
-
             `&lon=${longitude}` +
-
-            `&appid=${CONFIG.WEATHER.API_KEY}` +
-
-            `&units=${CONFIG.WEATHER.UNITS}`;
+            `&units=${CONFIG.WEATHER.UNITS}` +
+            `&appid=${CONFIG.WEATHER.API_KEY}`;
 
         return await this.get(url);
 

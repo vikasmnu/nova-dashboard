@@ -3,24 +3,45 @@
    Weather Module
 ========================================== */
 
-const Weather = {
+window.Weather = {
 
     elements: {
 
-        icon: document.getElementById("weather-icon"),
+        icon: null,
 
-        temperature: document.getElementById("temperature"),
+        temperature: null,
 
-        location: document.getElementById("location")
+        location: null,
+
+        description: null
 
     },
 
+    interval: null,
+
     init() {
+
+        this.elements.icon =
+            document.getElementById("weather-icon");
+
+        this.elements.temperature =
+            document.getElementById("temperature");
+
+        this.elements.location =
+            document.getElementById("location");
+
+        this.elements.description =
+            document.getElementById("weather-description");
+
+        this.load();
+
+    },
+
+    load() {
 
         if (!navigator.geolocation) {
 
-            this.elements.location.textContent =
-                "Location unavailable";
+            this.showError("Location unavailable");
 
             return;
 
@@ -30,7 +51,7 @@ const Weather = {
 
             position => {
 
-                this.load(
+                this.fetchWeather(
 
                     position.coords.latitude,
 
@@ -42,8 +63,7 @@ const Weather = {
 
             () => {
 
-                this.elements.location.textContent =
-                    "Permission denied";
+                this.showError("Location permission denied");
 
             }
 
@@ -51,36 +71,55 @@ const Weather = {
 
     },
 
-    async load(lat, lon) {
+    async fetchWeather(lat, lon) {
 
-        const data = await API.getWeather(lat, lon);
+        const weather = await API.getWeather(lat, lon);
 
-        if (!data) {
+        if (!weather) {
 
-            this.elements.location.textContent =
-                "Weather unavailable";
+            this.showError("Weather unavailable");
 
             return;
 
         }
 
-        this.update(data);
+        this.update(weather);
 
     },
 
-    update(data) {
+    update(weather) {
 
         this.elements.temperature.textContent =
 
-            `${Math.round(data.main.temp)}°`;
+            `${Math.round(weather.main.temp)}°`;
 
         this.elements.location.textContent =
 
-            data.name;
+            weather.name;
+
+        this.elements.description.textContent =
+
+            Utils.capitalize(
+
+                weather.weather[0].description
+
+            );
 
         this.elements.icon.src =
 
-            `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+            `https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`;
+
+    },
+
+    showError(message) {
+
+        this.elements.location.textContent = message;
+
+    },
+
+    destroy() {
+
+        clearInterval(this.interval);
 
     }
 
