@@ -24,6 +24,14 @@ window.Settings = {
 
   temperatureSelect: null,
 
+  wallpaperCategory: "nature",
+
+  wallpaperSelect: null,
+
+  backgroundBlur: 8,
+
+  blurSlider: null,
+
   init() {
     this.load();
 
@@ -49,6 +57,25 @@ window.Settings = {
 
     if (this.temperatureSelect) {
       this.temperatureSelect.value = this.get("temperatureUnit");
+    }
+
+    this.wallpaperCategorySelect =
+      document.getElementById("wallpaper-category");
+
+    if (this.wallpaperCategorySelect) {
+      this.wallpaperCategorySelect.value = this.get("wallpaperCategory");
+    }
+
+    this.wallpaperSelect = document.getElementById("wallpaper-category");
+
+    if (this.wallpaperSelect) {
+      this.wallpaperSelect.value = this.get("wallpaperCategory");
+    }
+
+    this.blurSlider = document.getElementById("background-blur");
+
+    if (this.blurSlider) {
+      this.blurSlider.value = this.get("backgroundBlur");
     }
   },
 
@@ -90,6 +117,34 @@ window.Settings = {
         );
 
         Weather.refresh();
+      },
+    );
+
+    this.wallpaperSelect?.addEventListener(
+      "change",
+
+      (event) => {
+        this.set(
+          "wallpaperCategory",
+
+          event.target.value,
+        );
+
+        Wallpaper.refresh();
+      },
+    );
+
+    this.blurSlider?.addEventListener(
+      "input",
+
+      (event) => {
+        this.set(
+          "backgroundBlur",
+
+          Number(event.target.value),
+        );
+
+        Wallpaper.updateBlur();
       },
     );
   },
