@@ -15,4 +15,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.Weather.init();
 
+    Search.init();
+
+    QuickLinks.init();
+
+    Modal.init();
+
 });
