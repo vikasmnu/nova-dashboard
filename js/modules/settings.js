@@ -1,199 +1,212 @@
-/* ==========================================
-   NOVA DASHBOARD
-   Settings Module
-========================================== */
+    /* ==========================================
+    NOVA DASHBOARD
+    Settings Module
+    ========================================== */
 
-window.Settings = {
-  defaults: {
-    clock24Hour: false,
+    window.Settings = {
+    defaults: {
+        clock24Hour: false,
 
-    temperatureUnit: "metric",
+        temperatureUnit: "metric",
 
-    searchEngine: "google",
-  },
+        searchEngine: "google",
 
-  data: {},
+        backgroundBlur: 8,
 
-  panel: null,
+        wallpaperCategory: "nature",
+    },
 
-  openButton: null,
+    data: {},
 
-  closeButton: null,
+    panel: null,
 
-  clockToggle: null,
+        openButton: null,
 
-  temperatureSelect: null,
+        closeButton: null,
 
-  wallpaperCategory: "nature",
+        clockToggle: null,
 
-  wallpaperSelect: null,
+        temperatureSelect: null,
 
-  backgroundBlur: 8,
+        wallpaperSelect: null,
 
-  blurSlider: null,
+        blurSlider: null,
 
-  init() {
-    this.load();
+        searchEngineSelect: null,
 
-    this.cache();
+    init() {
+        this.load();
 
-    this.events();
-  },
+        this.cache();
 
-  cache() {
-    this.panel = document.getElementById("settings-panel");
+        this.events();
+    },
 
-    this.openButton = document.getElementById("settings-button");
+    cache() {
+        this.panel = document.getElementById("settings-panel");
 
-    this.closeButton = document.getElementById("settings-close");
+        this.openButton = document.getElementById("settings-button");
 
-    this.clockToggle = document.getElementById("clock-format");
+        this.closeButton = document.getElementById("settings-close");
 
-    if (this.clockToggle) {
-      this.clockToggle.checked = this.get("clock24Hour");
-    }
+        this.clockToggle = document.getElementById("clock-format");
 
-    this.temperatureSelect = document.getElementById("temperature-unit");
+        if (this.clockToggle) {
+        this.clockToggle.checked = this.get("clock24Hour");
+        }
 
-    if (this.temperatureSelect) {
-      this.temperatureSelect.value = this.get("temperatureUnit");
-    }
+        this.temperatureSelect = document.getElementById("temperature-unit");
 
-    this.wallpaperCategorySelect =
-      document.getElementById("wallpaper-category");
+        if (this.temperatureSelect) {
+        this.temperatureSelect.value = this.get("temperatureUnit");
+        }
 
-    if (this.wallpaperCategorySelect) {
-      this.wallpaperCategorySelect.value = this.get("wallpaperCategory");
-    }
+        this.wallpaperSelect = document.getElementById("wallpaper-category");
 
-    this.wallpaperSelect = document.getElementById("wallpaper-category");
+        if (this.wallpaperSelect) {
+        this.wallpaperSelect.value = this.get("wallpaperCategory");
+        }
 
-    if (this.wallpaperSelect) {
-      this.wallpaperSelect.value = this.get("wallpaperCategory");
-    }
+        this.blurSlider = document.getElementById("background-blur");
 
-    this.blurSlider = document.getElementById("background-blur");
+        if (this.blurSlider) {
+        this.blurSlider.value = this.get("backgroundBlur");
+        }
 
-    if (this.blurSlider) {
-      this.blurSlider.value = this.get("backgroundBlur");
-    }
-  },
+        this.searchEngineSelect = document.getElementById("search-engine");
 
-  events() {
-    this.openButton?.addEventListener(
-      "click",
+        if (this.searchEngineSelect) {
+        this.searchEngineSelect.value = this.get("searchEngine");
+        }
+    },
 
-      () => this.open(),
-    );
+    events() {
+        this.openButton?.addEventListener(
+        "click",
 
-    this.closeButton?.addEventListener(
-      "click",
-
-      () => this.close(),
-    );
-
-    this.clockToggle?.addEventListener(
-      "change",
-
-      (event) => {
-        this.set(
-          "clock24Hour",
-
-          event.target.checked,
+        () => this.open(),
         );
 
-        Time.update();
-      },
-    );
+        this.closeButton?.addEventListener(
+        "click",
 
-    this.temperatureSelect?.addEventListener(
-      "change",
-
-      (event) => {
-        this.set(
-          "temperatureUnit",
-
-          event.target.value,
+        () => this.close(),
         );
 
-        Weather.refresh();
-      },
-    );
+        this.clockToggle?.addEventListener(
+        "change",
 
-    this.wallpaperSelect?.addEventListener(
-      "change",
+        (event) => {
+            this.set(
+            "clock24Hour",
 
-      (event) => {
-        this.set(
-          "wallpaperCategory",
+            event.target.checked,
+            );
 
-          event.target.value,
+            Time.update();
+        },
         );
 
-        Wallpaper.refresh();
-      },
-    );
+        this.temperatureSelect?.addEventListener(
+        "change",
 
-    this.blurSlider?.addEventListener(
-      "input",
+        (event) => {
+            this.set(
+            "temperatureUnit",
 
-      (event) => {
-        this.set(
-          "backgroundBlur",
+            event.target.value,
+            );
 
-          Number(event.target.value),
+            Weather.refresh();
+        },
         );
 
-        Wallpaper.updateBlur();
-      },
-    );
-  },
+        this.wallpaperSelect?.addEventListener(
+        "change",
 
-  open() {
-    this.panel.classList.add("open");
-  },
+        (event) => {
+            this.set(
+            "wallpaperCategory",
 
-  close() {
-    this.panel.classList.remove("open");
-  },
+            event.target.value,
+            );
 
-  load() {
-    this.data = Storage.get(
-      STORAGE_KEYS.SETTINGS,
+            Wallpaper.refresh();
+        },
+        );
 
-      this.defaults,
-    );
-  },
+        this.blurSlider?.addEventListener(
+        "input",
 
-  save() {
-    Storage.set(
-      STORAGE_KEYS.SETTINGS,
+        (event) => {
+            this.set(
+            "backgroundBlur",
 
-      this.data,
-    );
-  },
+            Number(event.target.value),
+            );
 
-  get(key) {
-    return this.data[key];
-  },
+            Wallpaper.updateBlur();
+        },
+        );
 
-  set(key, value) {
-    if (!(key in this.defaults)) {
-      console.warn(`Unknown setting: ${key}`);
+        this.searchEngineSelect?.addEventListener(
+        "change",
 
-      return;
-    }
+        (event) => {
+            this.set(
+            "searchEngine",
 
-    this.data[key] = value;
+            event.target.value,
+            );
+        },
+        );
+    },
 
-    this.save();
-  },
+    open() {
+        this.panel.classList.add("open");
+    },
 
-  reset() {
-    this.data = {
-      ...this.defaults,
+    close() {
+        this.panel.classList.remove("open");
+    },
+
+    load() {
+        this.data = Storage.get(
+        STORAGE_KEYS.SETTINGS,
+
+        this.defaults,
+        );
+    },
+
+    save() {
+        Storage.set(
+        STORAGE_KEYS.SETTINGS,
+
+        this.data,
+        );
+    },
+
+    get(key) {
+        return this.data[key];
+    },
+
+    set(key, value) {
+        if (!(key in this.defaults)) {
+        console.warn(`Unknown setting: ${key}`);
+
+        return;
+        }
+
+        this.data[key] = value;
+
+        this.save();
+    },
+
+    reset() {
+        this.data = {
+        ...this.defaults,
+        };
+
+        this.save();
+    },
     };
-
-    this.save();
-  },
-};
